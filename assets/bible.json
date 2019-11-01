@@ -1,0 +1,267 @@
+{
+    "Torah": {
+        "Genesis": [
+            [
+                {
+                    "v_id": "TGC1V1",
+                    "eng": "In the beginning God created the heaven and the earth.",
+                    "he": "בְּרֵאשִׁית, בָּרָא אֱלֹהִים, אֵת הַשָּׁמַיִם, וְאֵת הָאָרֶץ"
+                },
+                {
+                    "v_id": "TGC1V2",
+                    "eng": "Now the earth was unformed and void, and darkness was upon the face of the deep; and the spirit of God hovered over the face of the waters",
+                    "he": "וְהָאָרֶץ, הָיְתָה תֹהוּ וָבֹהוּ, וְחֹשֶׁךְ, עַל-פְּנֵי תְהוֹם וְרוּחַ אֱלֹהִים, מְרַחֶפֶת עַל-פְּנֵי הַמָּיִם"
+                },
+                {
+                    "v_id": "TGC1V3",
+                    "eng": "And God said: 'Let there be light.' And there was light.",
+                    "he": "וַיֹּאמֶר אֱלֹהִים, יְהִי אוֹר; וַיְהִי-אוֹר"
+                },
+                {
+                    "v_id": "TGC1V4",
+                    "eng": "And God saw the light, that it was good; and God divided the light from the darkness.",
+                    "he": "וַיַּרְא אֱלֹהִים אֶת-הָאוֹר, כִּי-טוֹב; וַיַּבְדֵּל אֱלֹהִים,  בֵּין הָאוֹר וּבֵין הַחֹשֶׁךְ"
+                },
+                {
+                    "v_id": "TGC1V5",
+                    "eng": "And God called the light Day, and the darkness He called Night. And there was evening and there was morning, one day.",
+                    "he": "וַיִּקְרָא אֱלֹהִים לָאוֹר יוֹם, וְלַחֹשֶׁךְ קָרָא לָיְלָה; וַיְהִי-עֶרֶב וַיְהִי-בֹקֶר, יוֹם אֶחָד"
+                },
+                {
+                    "v_id": "TGC1V6",
+                    "eng": "And God said: 'Let there be a firmament in the midst of the waters, and let it divide the waters from the waters.'",
+                    "he": "וַיֹּאמֶר אֱלֹהִים, יְהִי רָקִיעַ בְּתוֹךְ הַמָּיִם, וִיהִי מַבְדִּיל, בֵּין מַיִם לָמָיִם"
+                },
+                {
+                    "v_id": "TGC1V7",
+                    "eng": "And God made the firmament, and divided the waters which were under the firmament from the waters which were above the firmament; and it was so.",
+                    "he": "וַיַּעַשׂ אֱלֹהִים, אֶת-הָרָקִיעַ, וַיַּבְדֵּל בֵּין הַמַּיִם אֲשֶׁר מִתַּחַת לָרָקִיעַ, וּבֵין הַמַּיִם אֲשֶׁר מֵעַל לָרָקִיעַ; וַיְהִי-כֵן"
+                },
+                {
+                    "v_id": "TGC1V8",
+                    "eng": "And God called the firmament Heaven. And there was evening and there was morning, a second day.",
+                    "he": "וַיִּקְרָא אֱלֹהִים לָרָקִיעַ, שָׁמָיִם; וַיְהִי-עֶרֶב וַיְהִי-בֹקֶר, יוֹם שֵׁנִי"
+                },
+                {
+                    "v_id": "TGC1V9",
+                    "eng": "And God said: 'Let the waters under the heaven be gathered together unto one place, and let the dry land appear.' And it was so.",
+                    "he": "וַיֹּאמֶר אֱלֹהִים, יִקָּווּ הַמַּיִם מִתַּחַת הַשָּׁמַיִם אֶל-מָקוֹם אֶחָד, וְתֵרָאֶה, הַיַּבָּשָׁה; וַיְהִי-כֵן"
+                }
+
+            ]
+        ],
+        "Exodus": [
+            []
+        ],
+        "Leviticus": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Numbers": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Deuteronomy": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        }
+    },
+    "Prophets": {
+        "Joshua": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Judges": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Samuel": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Kings": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Isaiah": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Jeremiah": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Ezekiel": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Hosea": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Joel": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Amos": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Obadiah": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Jonah": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Micah": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Nahum": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Habakkuk": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Zephaniah": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Haggai": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Zechariah": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Malachi": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        }
+    },
+    "Writings": {
+        "Chronicles": {
+            "1": {
+                "eng": [
+                    "Adam, Seth, Enosh;",
+                    "Kenan, Mahalalel, Jared;",
+                    "Enoch, Methuselah, Lamech;"
+                ],
+                "heb": [
+                    "אָדָם שֵׁת, אֱנוֹשׁ",
+                    " קֵינָן מַהֲלַלְאֵל, יָרֶד.",
+                    "חֲנוֹךְ מְתוּשֶׁלַח, לָמֶךְ."
+                ]
+            }
+        },
+        "Psalms": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Job": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Proverbs": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Ruth": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Song of Songs": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Ecclesiastes": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Lamentations": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Esther": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Daniel": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        },
+        "Ezra/Nehemiah": {
+            "1": {
+                "eng": [],
+                "heb": []
+            }
+        }
+    }
+}

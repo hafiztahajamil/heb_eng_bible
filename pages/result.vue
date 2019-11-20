@@ -1,8 +1,8 @@
 <template>
   <b-container>
     <b-row>
-      <navbar />
-      <b-col col xs="6" md="8" xl="9">
+      <b-breadcrumb :items="items"></b-breadcrumb>
+      <b-col col xs="6" md="10" xl="12">
         <b-row align-h="end">
           <n-checkbox v-model="lang.eng">Eng</n-checkbox>
           <n-checkbox v-model="lang.heb">עברית</n-checkbox>
@@ -15,26 +15,25 @@
               placement="bottom"
               class="now-ui-icons design_palette"
               @click="modals.palette = !modals.palette"
-            >
-            </i>
+            ></i>
           </n-button>
         </b-row>
         <b-row>
-          <b-col>
-            <h3 v-if="lang.heb" class="heb">בְּרֵאשִׁית</h3>
+          <b-col v-if="lang.heb">
+            <h3 class="heb">בְּרֵאשִׁית</h3>
           </b-col>
-          <b-col>
-            <h3 v-if="lang.eng">Genesis</h3>
+          <b-col v-if="lang.eng">
+            <h3>Genesis</h3>
           </b-col>
         </b-row>
         <table class="table">
           <thead>
             <tr>
-              <th>
-                <h5 v-if="lang.heb" class="heb">1 פרק</h5>
+              <th v-if="lang.heb">
+                <h5 class="heb">1 פרק</h5>
               </th>
-              <th>
-                <h5 v-if="lang.eng">Chapter 1</h5>
+              <th v-if="lang.eng">
+                <h5>Chapter 1</h5>
               </th>
             </tr>
           </thead>
@@ -43,36 +42,44 @@
               v-for="(verse, index) in bibleObj.Torah.Genesis[0]"
               :key="index"
             >
-              <td
-                class="heb"
-                @mouseenter="showCustomizeOption($event, index)"
-                @mouseleave="hideCustomizeOption($event, index)"
-              >
-                <span v-show="customize[index].icon && !customize[index].edit">
+              <td v-if="lang.heb" class="heb">
+                <span
+                  v-if="customize[index].icon && !customize[index].edit"
+                  class="float-left"
+                >
                   <i
                     v-b-tooltip.hover
                     title="Edit Verse"
-                    class="far fa-lg fa-edit"
+                    class="fas fa-sm fa-edit"
                     @click="editVerse($event, index)"
                   ></i>
                   <i
                     v-b-tooltip.hover
                     title="Apply Color"
-                    class="fas fa-lg fa-fill-drip"
+                    class="fas fa-sm fa-fill-drip"
                     @click="applyColor($event, index)"
                   ></i>
                   <i
                     v-b-tooltip.hover
                     title="Show Value"
-                    class="fas fa-lg fa-info"
+                    class="fas fa-sm fa-info"
                     @click="applyValue($event, index)"
                   ></i>
                 </span>
-                <span v-if="lang.heb && !customize[index].edit" ref="verse">{{
-                  toHeb(index + 1) + '.' + verse.he
+                <span>
+                  <i
+                    v-if="!customize[index].icon && !customize[index].edit"
+                    v-b-tooltip.hover
+                    title="Options"
+                    class="fas fa-sm fa-ellipsis-h float-left"
+                    @click="showCustomizeOption($event, index)"
+                  ></i>
+                </span>
+                <span v-if="!customize[index].edit" ref="verse">{{
+                  toHeb(index + 1) + '. ' + verse.he
                 }}</span>
                 <b-textarea
-                  v-if="lang.heb && customize[index].edit"
+                  v-if="customize[index].edit"
                   v-model="verse.he"
                   size="sm"
                 ></b-textarea>
@@ -84,15 +91,29 @@
                   >לשמור</a
                 >
               </td>
-              <td>
-                <span v-if="lang.eng">{{ index + 1 + '. ' + verse.eng }}</span>
+              <td v-if="lang.eng">
+                <span v-if="!customize[index].edit">{{
+                  index + 1 + '. ' + verse.eng
+                }}</span>
+                <b-textarea
+                  v-if="customize[index].edit"
+                  v-model="verse.eng"
+                  size="sm"
+                ></b-textarea>
+                <a
+                  v-show="customize[index].edit"
+                  href="#"
+                  class="float-right"
+                  @click="customize[index].edit = !customize[index].edit"
+                  >Save</a
+                >
               </td>
             </tr>
           </tbody>
         </table>
       </b-col>
     </b-row>
-    <modal :show.sync="modals.palette" header-classes="justify-content-center">
+    <!-- <modal :show.sync="modals.palette" header-classes="justify-content-center">
       <b-container>
         <h5 slot="header">Assign Colors</h5>
         <b-row>
@@ -108,36 +129,24 @@
         </b-row>
 
         <span slot="footer">
-          <n-button
-            type="success-outline"
-            @click="modals.palette = !modals.palette"
-          >
-            Save
-          </n-button>
-          <n-button type="danger" @click="modals.palette = !modals.palette">
-            Close
-          </n-button>
+          <n-button type="success-outline" @click="modals.palette = !modals.palette">Save</n-button>
+          <n-button type="danger" @click="modals.palette = !modals.palette">Close</n-button>
         </span>
       </b-container>
-    </modal>
+    </modal>-->
   </b-container>
 </template>
 <script>
-import Swatches from 'vue-swatches'
 import 'vue-swatches/dist/vue-swatches.min.css'
-import navbar from './components/navbar'
-import { Checkbox, FormGroupInput, Button, Modal } from '@/components'
+import { Checkbox, FormGroupInput, Button } from '@/components'
 import demoBible from '@/assets/bible.json'
 export default {
   layout: 'reading',
   name: 'Result',
   components: {
-    navbar,
     [Button.name]: Button,
     [Checkbox.name]: Checkbox,
-    [FormGroupInput.name]: FormGroupInput,
-    Modal,
-    Swatches
+    [FormGroupInput.name]: FormGroupInput
   },
 
   data() {
@@ -150,7 +159,30 @@ export default {
       modals: {
         palette: false
       },
+      items: [
+        {
+          text: 'Genesis',
+          active: true
+        },
+        {
+          text: 'Exodus',
+          href: '#'
+        },
+        {
+          text: 'Leviticus',
+          href: '#'
+        },
+        {
+          text: 'Numbers',
+          href: '#'
+        },
+        {
+          text: 'Deuteronomy',
+          href: '#'
+        }
+      ],
       customize: [
+        { icon: false, edit: false, color: false, value: false },
         { icon: false, edit: false, color: false, value: false },
         { icon: false, edit: false, color: false, value: false },
         { icon: false, edit: false, color: false, value: false },
@@ -162,59 +194,57 @@ export default {
         { icon: false, edit: false, color: false, value: false }
       ],
       map: {
-        '0': '-',
-        '1': 'א',
-        '2': 'ב',
-        '3': 'ג',
-        '4': 'ד',
-        '5': 'ה',
-        '6': 'ו',
-        '7': 'ז',
-        '8': 'ח',
-        '9': 'ט',
-        '10': 'י'
+        0: '-',
+        1: 'א',
+        2: 'ב',
+        3: 'ג',
+        4: 'ד',
+        5: 'ה',
+        6: 'ו',
+        7: 'ז',
+        8: 'ח',
+        9: 'ט',
+        10: 'י'
       },
-      hebLetterMap: [
-        { letter: 'א', val: 1, col: '#000000' },
-        { letter: 'בּ', val: 2, col: '#000000' },
-        { letter: 'ב', val: 2, col: '#000000' },
-        { letter: 'ג', val: 3, col: '#000000' },
-        { letter: 'ד', val: 4, col: '#000000' },
-        { letter: 'ה', val: 5, col: '#000000' },
-        { letter: 'ו', val: 6, col: '#000000' },
-        { letter: 'ז', val: 7, col: '#000000' },
-        { letter: 'ח', val: 8, col: '#000000' },
-        { letter: 'ט', val: 9, col: '#000000' },
-        { letter: 'י', val: 10, col: '#000000' },
-        { letter: 'כּ', val: 20, col: '#000000' },
-        { letter: 'כ', val: 20, col: '#000000' },
-        { letter: 'ךּ', val: 30, col: '#000000' },
-        { letter: 'ך', val: 30, col: '#000000' },
-        { letter: 'ל', val: 30, col: '#000000' },
-        { letter: 'מ', val: 40, col: '#000000' },
-        { letter: 'ם', val: 600, col: '#000000' },
-        { letter: 'נ', val: 50, col: '#000000' },
-        { letter: 'ן', val: 500, col: '#000000' },
-        { letter: 'ס', val: 60, col: '#000000' },
-        { letter: 'ע', val: 70, col: '#000000' },
-        { letter: 'פּ', val: 80, col: '#000000' },
-        { letter: 'ף', val: 800, col: '#000000' },
-        { letter: 'צ', val: 90, col: '#000000' },
-        { letter: 'ץ', val: 900, col: '#000000' },
-        { letter: 'ק', val: 100, col: '#000000' },
-        { letter: 'ר', val: 200, col: '#000000' },
-        { letter: 'שׁ', val: 300, col: '#000000' },
-        { letter: 'שׂ', val: 300, col: '#000000' },
-        { letter: 'תּ', val: 400, col: '#000000' },
-        { letter: 'ת', val: 400, col: '#000000' }
-      ]
+      hebLetterMap: {
+        א: { val: 1, col: '#000000' },
+        בּ: { val: 2, col: '#000000' },
+        ב: { val: 2, col: '#000000' },
+        ג: { val: 3, col: '#000000' },
+        ד: { val: 4, col: '#000000' },
+        ה: { val: 5, col: '#000000' },
+        ו: { val: 6, col: '#000000' },
+        ז: { val: 7, col: '#000000' },
+        ח: { val: 8, col: '#000000' },
+        ט: { val: 9, col: '#000000' },
+        י: { val: 10, col: '#000000' },
+        כּ: { val: 20, col: '#000000' },
+        כ: { val: 20, col: '#000000' },
+        ךּ: { val: 30, col: '#000000' },
+        ך: { val: 30, col: '#000000' },
+        ל: { val: 30, col: '#000000' },
+        מ: { val: 40, col: '#000000' },
+        ם: { val: 600, col: '#000000' },
+        נ: { val: 50, col: '#000000' },
+        ן: { val: 500, col: '#000000' },
+        ס: { val: 60, col: '#000000' },
+        ע: { val: 70, col: '#000000' },
+        פּ: { val: 80, col: '#000000' },
+        ף: { val: 800, col: '#000000' },
+        צ: { val: 90, col: '#000000' },
+        ץ: { val: 900, col: '#000000' },
+        ק: { val: 100, col: '#000000' },
+        ר: { val: 200, col: '#000000' },
+        שׁ: { val: 300, col: '#000000' },
+        שׂ: { val: 300, col: '#000000' },
+        תּ: { val: 400, col: '#000000' },
+        ת: { val: 400, col: '#000000' }
+      }
     }
   },
   computed: {
-    sliceArray(index) {
-      const start = index * 10 - index
-      const end = (index - 1) * (index + 10)
-      return this.hebLetterMap.slice(start, end)
+    navigation() {
+      return Object.keys(this.bibleObj.Torah)
     }
   },
   methods: {
@@ -228,14 +258,28 @@ export default {
     applyValue(e, index) {
       e.preventDefault()
       let verseStyle = this.$refs.verse[index].innerHTML
+      const simpleVerse = verseStyle.replace(/[\u0591-\u05C7 \s]/g, '')
+      let wordSum = 0
+      let sentenceSum = 0
+      for (let i = 2; i < simpleVerse.length; i++) {
+        const letter = simpleVerse.charAt(i)
+        if (letter in this.hebLetterMap) {
+          wordSum += this.hebLetterMap[letter].val
+          if (simpleVerse.charCodeAt(i) === 1488) {
+            sentenceSum += wordSum
+            wordSum = 0
+          }
+        }
+      }
       for (const i in this.hebLetterMap) {
-        const letter = this.hebLetterMap[i].letter
-        const re = new RegExp(letter, 'g')
+        const re = new RegExp(i, 'g')
         verseStyle = verseStyle.replace(
           re,
-          letter + '<sup>' + this.hebLetterMap[i].val + '  </sup>'
+          i + '<sup>' + this.hebLetterMap[i].val + '  </sup>'
         )
+        verseStyle.replace(/,/g, 'a')
       }
+      verseStyle += '<sub>' + sentenceSum + '  </sub>'
       this.$refs.verse[index].innerHTML = verseStyle
     },
     applyColor(e, index) {
@@ -268,8 +312,12 @@ export default {
 </script>
 <style>
 .heb {
-  font-family: 'Frank Ruhl Libre', serif;
+  font-family: 'David Libre', serif;
   text-align: right;
+}
+
+.heb span {
+  font-size: larger;
 }
 
 li {
@@ -284,8 +332,13 @@ td {
   width: 25%;
 }
 sup {
+  font-size: 7px;
+  color: grey;
+  vertical-align: text-top;
+}
+sub {
   font-size: 8px;
-  color: blue;
+  color: hsl(240, 96%, 82%);
 }
 i {
   display: block;

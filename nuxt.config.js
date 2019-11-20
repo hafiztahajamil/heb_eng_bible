@@ -23,7 +23,7 @@ module.exports = {
       {
         rel: 'stylesheet',
         href:
-          'https://fonts.googleapis.com/css?family=Bellefair|Frank+Ruhl+Libre|Tinos&display=swap'
+          'https://fonts.googleapis.com/css?family=David+Libre&display=swap&subset=hebrew'
       },
       {
         rel: 'stylesheet',

@@ -19,6 +19,16 @@
           </n-button>
         </b-row>
         <b-row>
+          <b-dd text="Chapter">
+            <b-dropdown-item
+              v-for="(chapter, name) in bibleObj.Torah.Genesis"
+              :key="name"
+            >
+              {{ name }}
+            </b-dropdown-item>
+          </b-dd>
+        </b-row>
+        <b-row>
           <b-col v-if="lang.heb">
             <h3 class="heb">בְּרֵאשִׁית</h3>
           </b-col>
@@ -275,11 +285,10 @@ export default {
         const re = new RegExp(i, 'g')
         verseStyle = verseStyle.replace(
           re,
-          i + '<sup>' + this.hebLetterMap[i].val + '  </sup>'
+          i + '<sub>' + this.hebLetterMap[i].val + '  </sub>'
         )
-        verseStyle.replace(/,/g, 'a')
       }
-      verseStyle += '<sub>' + sentenceSum + '  </sub>'
+      verseStyle += '<sup>' + sentenceSum + '  </sup>'
       this.$refs.verse[index].innerHTML = verseStyle
     },
     applyColor(e, index) {
@@ -332,13 +341,14 @@ td {
   width: 25%;
 }
 sup {
-  font-size: 7px;
-  color: grey;
+  font-size: 8px;
+  color: hsl(240, 96%, 82%);
   vertical-align: text-top;
 }
 sub {
-  font-size: 8px;
-  color: hsl(240, 96%, 82%);
+  font-size: 6px;
+  color: grey;
+  writing-mode: tb-lr;
 }
 i {
   display: block;

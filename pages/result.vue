@@ -2,9 +2,19 @@
   <b-container>
     <b-row>
       <b-breadcrumb :items="items"></b-breadcrumb>
-      <b-col col xs="6" md="10" xl="12">
+      <b-col cols="12">
+        <b-row>
+          <b-dd text="Chapter">
+            <b-dropdown-item
+              v-for="(chapter, name) in bibleObj.Torah.Genesis"
+              :key="name"
+            >
+              {{ name + 1 }}
+            </b-dropdown-item>
+          </b-dd>
+        </b-row>
         <b-row align-h="end">
-          <n-checkbox v-model="lang.eng">Eng</n-checkbox>
+          <n-checkbox v-model="lang.eng">Eng &nbsp;</n-checkbox>
           <n-checkbox v-model="lang.heb">עברית</n-checkbox>
         </b-row>
         <b-row align-h="end">
@@ -17,16 +27,6 @@
               @click="modals.palette = !modals.palette"
             ></i>
           </n-button>
-        </b-row>
-        <b-row>
-          <b-dd text="Chapter">
-            <b-dropdown-item
-              v-for="(chapter, name) in bibleObj.Torah.Genesis"
-              :key="name"
-            >
-              {{ name }}
-            </b-dropdown-item>
-          </b-dd>
         </b-row>
         <b-row>
           <b-col v-if="lang.heb">
@@ -112,7 +112,6 @@
                 ></b-textarea>
                 <a
                   v-show="customize[index].edit"
-                  href="#"
                   class="float-right"
                   @click="customize[index].edit = !customize[index].edit"
                   >Save</a
@@ -343,15 +342,19 @@ td {
 sup {
   font-size: 8px;
   color: hsl(240, 96%, 82%);
-  vertical-align: text-top;
 }
 sub {
   font-size: 6px;
   color: grey;
-  writing-mode: tb-lr;
+  left: 0.75em;
+  top: 2.25em;
+  -webkit-writing-mode: vertical-lr;
+  -ms-writing-mode: tb-lr;
+  writing-mode: vertical-lr;
 }
 i {
   display: block;
   cursor: pointer;
+  font-size: small;
 }
 </style>

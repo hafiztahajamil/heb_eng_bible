@@ -28,11 +28,6 @@ module.exports = {
       {
         rel: 'stylesheet',
         href: 'https://use.fontawesome.com/releases/v5.1.0/css/all.css'
-      },
-      {
-        rel: 'stylesheet',
-        href:
-          'https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css'
       }
     ]
   },
